@@ -1206,10 +1206,10 @@ void ant_impl::update_atrs(void)
         if (not enb_rx and enb_tx)
             fd = txonly;
         gpio_atr_3000::sptr atr = perif.atr;
-        atr->set_atr_reg(ATR_REG_IDLE, STATE_OFF);
-        atr->set_atr_reg(ATR_REG_RX_ONLY, rxonly);
-        atr->set_atr_reg(ATR_REG_TX_ONLY, txonly);
-        atr->set_atr_reg(ATR_REG_FULL_DUPLEX, fd);
+        atr->set_atr_reg(ATR_REG_IDLE, STATE_OFF | (1<<7));
+        atr->set_atr_reg(ATR_REG_RX_ONLY, rxonly | (1<<7));
+        atr->set_atr_reg(ATR_REG_TX_ONLY, txonly | (1<<7));
+        atr->set_atr_reg(ATR_REG_FULL_DUPLEX, fd | (1<<7));
     }
     if (_radio_perifs.size() > _fe2 and _radio_perifs[_fe2].atr) {
         radio_perifs_t& perif = _radio_perifs[_fe2];
@@ -1227,10 +1227,10 @@ void ant_impl::update_atrs(void)
         if (not enb_rx and enb_tx)
             fd = txonly;
         gpio_atr_3000::sptr atr = perif.atr;
-        atr->set_atr_reg(ATR_REG_IDLE, STATE_OFF);
-        atr->set_atr_reg(ATR_REG_RX_ONLY, rxonly);
-        atr->set_atr_reg(ATR_REG_TX_ONLY, txonly);
-        atr->set_atr_reg(ATR_REG_FULL_DUPLEX, fd);
+        atr->set_atr_reg(ATR_REG_IDLE, STATE_OFF | (1<<7));
+        atr->set_atr_reg(ATR_REG_RX_ONLY, rxonly | (1<<7));
+        atr->set_atr_reg(ATR_REG_TX_ONLY, txonly | (1<<7));
+        atr->set_atr_reg(ATR_REG_FULL_DUPLEX, fd | (1<<7));
     }
 }
 
